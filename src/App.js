@@ -12,12 +12,9 @@ class BooksApp extends React.Component {
     searchedBooks: [],
   }
   
-  componentDidMount() {
-    BooksAPI.getAll().then(info => {
-      this.setState({
-        books: info
-      })
-    })
+  async componentDidMount() {
+    const books = await BooksAPI.getAll()
+    this.setState({ books })
   } 
 
   OnHandleSearch = (query) => {
